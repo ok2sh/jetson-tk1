@@ -17,14 +17,14 @@ If flashing fails with "Operation not permitted", give your terminal Full Disk A
 
 ## Connecting
 
-Power the board from the 12 V barrel jack, then connect over either:
+Power the board from the 12 V barrel jack, then connect over micro-USB or Ethernet.
 
-- **micro-USB:** the port used for flashing also provides USB networking and a serial console (`/dev/cu.usbmodem*`, 115200). With no other setup, the Mac and the board talk over a link-local address, and `jetson-tk1.local` resolves.
-- **Ethernet:** plug into a LAN with DHCP. The board is reachable at `jetson-tk1.local` on that network.
+- **micro-USB:** The flashing port also provides USB networking and a serial console (`/dev/cu.usbmodem*`, 115200 baud). The Mac and board will communicate over a link-local address with hostname `jetson-tk1.local`.
+- **Ethernet:** Connect to a network with DHCP. The board will be reachable at `jetson-tk1.local`.
 
-To give the board internet over micro-USB, open System Settings > General > Sharing > Internet Sharing, share your Mac's connection to "Jetson TK1", and turn it on. The board gets an address in 192.168.2.0/24.
+To share your Mac's internet over micro-USB, turn on Internet Sharing in System Settings > General > Sharing and select "Jetson TK1". The board will get an address in 192.168.2.0/24.
 
-The UART header (ttyS0, 115200) also has a console.
+A serial console is also available on the UART header (ttyS0, 115200 baud).
 
 ## Features
 
