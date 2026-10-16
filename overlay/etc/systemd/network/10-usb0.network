@@ -1,0 +1,9 @@
+[Match]
+Name=usb0
+
+[Network]
+DHCP=ipv4
+LinkLocalAddressing=yes
+
+[DHCPv4]
+RouteMetric=600

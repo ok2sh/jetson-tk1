@@ -1,0 +1,14 @@
+[Unit]
+Description=USB gadget (NCM network + ACM console) on micro-USB
+Requires=sys-kernel-config.mount
+After=sys-kernel-config.mount
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/usb-gadget
+
+[Install]
+WantedBy=multi-user.target
