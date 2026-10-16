@@ -1,0 +1,28 @@
+--- a/src/main.c	2026-10-15 19:59:13
++++ b/src/main.c	2026-10-15 19:59:14
+@@ -31,7 +31,25 @@
+ #include <stdlib.h>
+ #include <errno.h>
+ #include <string.h>
++#ifdef __APPLE__
++#include <stdarg.h>
++static void error(int status, int errnum, const char *fmt, ...)
++{
++	va_list ap;
++	fflush(stdout);
++	fprintf(stderr, "tegrarcm: ");
++	va_start(ap, fmt);
++	vfprintf(stderr, fmt, ap);
++	va_end(ap);
++	if (errnum)
++		fprintf(stderr, ": %s", strerror(errnum));
++	fputc('\n', stderr);
++	if (status)
++		exit(status);
++}
++#else
+ #include <error.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
