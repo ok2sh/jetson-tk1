@@ -1,0 +1,16 @@
+--- a/drivers/gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c	2026-10-15 21:31:12
++++ b/drivers/gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c	2026-10-15 21:31:12
+@@ -534,11 +534,11 @@
+ 		ret = gk20a_instobj_ctor_dma(imem, size >> PAGE_SHIFT,
+ 					     align, &node);
+ 	*pmemory = node ? &node->base.memory : NULL;
++	if (node)
++		node->imem = imem;
+ 	if (ret)
+ 		return ret;
+ 
+-	node->imem = imem;
+-
+ 	nvkm_debug(subdev, "alloc size: 0x%x, align: 0x%x, gaddr: 0x%llx\n",
+ 		   size, align, (u64)node->mn->offset << 12);
+ 
